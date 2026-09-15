@@ -1,11 +1,22 @@
-import raylib
-import pyray
+import raylib as rl
+from pyray import *
 
-pyray.init_window(1280,720,'Kangaroo Runner')
+init_window(1280,720,'Kangaroo Runner')
+x_pos = 100
+y_pos = 100
 
-while not raylib.WinndoSouldClose():
-    raylib.BeginDrawing()
-    raylib.DrawCircle(100,200,50,raylib.RED)
-    if raylib.IsKeyPressed(raylib.KEY_SPACE):
-        print('Space')
-    raylib.EndDrawing()
+while not window_should_close():
+    begin_drawing()
+    clear_background(RAYWHITE)
+    draw_circle(int(x_pos),int(y_pos),50,RED)
+    if is_key_down(rl.KEY_D):
+        x_pos += 0.1
+    if is_key_down(rl.KEY_A):
+        x_pos -= 0.1
+    if is_key_down(rl.KEY_S):
+        y_pos += 0.1
+    if is_key_down(rl.KEY_W):
+        y_pos -= 0.1
+    if is_key_pressed(rl.KEY_SPACE):
+        close_window()
+    end_drawing()
